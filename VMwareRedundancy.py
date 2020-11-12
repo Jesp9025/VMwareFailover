@@ -3,6 +3,7 @@
 
 from SSHLibrary import SSHLibrary
 import time
+import os, subprocess
 ssh = SSHLibrary()
 ssh.open_connection("10.156.4.65")
 username = input("Username: ")
@@ -10,6 +11,10 @@ password = input("Password: ")
 print("\033c")
 ssh.login(username, password)
 
+def restartNetAdapter():
+    p = subprocess.Popen('powershell.exe Invoke-Command -Computername JJ-PSRV1 -ScriptBlock {Restart-NetAdapter -Name "Ethernet0"}')
+    time.sleep(7)
+    p.terminate()
 #The loop
 while True:
     PSRV1 = ssh.execute_command("vim-cmd vmsvc/power.getstate 20", return_stdout=True)
@@ -31,6 +36,7 @@ while True:
         # This could be relevant if PSRV1 is updating etc. VM will still be online, but it won't be able to handle printing in its state.
         print("Pinging PSRV1...")
         pingResponse = ssh.execute_command("ping 10.156.4.98", return_stdout=True)
+        pingResponse2 = ssh.execute_command("ping 10.156.4.97", return_stdout=True)
         if "100% packet loss" in pingResponse:
             if "Powered on" in PSRV2:
                 print("Virtual Machine: PSRV1 returned no response. Keeping Virtual Machine: PSRV2 alive")
@@ -43,6 +49,9 @@ while True:
                 print("Virtual Machine: PSRV2 is Online")
                 ssh.start_command("vim-cmd vmsvc/power.off 24")
                 print("Powering Off Virtual Machine: PRSV2")
+            if "100% packet loss" in pingResponse2:
+                print("Attempting to restart Net Adapter on PSRV1")
+                restartNetAdapter()
     # If PSRV1 is OFF:
     else:
         # If PSRV2 is ON:
@@ -53,6 +62,8 @@ while True:
             print("PSRV1 appears to be offline.\nPowering Up Virtual Machine: PSRV2")
             ssh.start_command("vim-cmd vmsvc/power.on 24")
     time.sleep(2)
+
     print("Waiting 10 seconds")
     time.sleep(10)
+    
 ssh.close_connection()
