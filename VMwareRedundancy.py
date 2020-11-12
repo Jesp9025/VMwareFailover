@@ -30,9 +30,8 @@ while True:
             print("Virtual Machine: PSRV2 is Offline")
             print("Pinging PSRV1...")
             pingResponse = ssh.execute_command("ping 10.156.4.97", return_stdout=True)
-            print(pingResponse)
             if "100% packet loss" in pingResponse:
-                print("Virtual Machine: PSRV1 is Offline\nVirtual Machine: PSRV2 is Offline\nPowering On Virtual Machine: PSRV2\n")
+                print("Virtual Machine: PSRV1 is returned no response\nPowering On Virtual Machine: PSRV2\n")
                 ssh.start_command("vim-cmd vmsvc/power.on 19")
     
     time.sleep(10)
