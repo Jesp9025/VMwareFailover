@@ -2,7 +2,7 @@
 
 Python version and powershell version of print server failover.
 
-v2 (only PowerShell): removed the restart of network adapter. IP duplicate has been fixed in Windows Registry on print servers with ArpRetryCount 0 and IPAutoconfigurationEnabled 0.
+v2 (only PowerShell):Removed the restart of network adapter. IP duplicate has been fixed in Windows Registry on print servers with ArpRetryCount 0 and IPAutoconfigurationEnabled 0.
 
 # What is this
 
