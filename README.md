@@ -2,11 +2,13 @@
 
 Python version and powershell version of print server failover.
 
-v2 (only PowerShell):Removed the restart of network adapter. IP duplicate has been fixed in Windows Registry on print servers with ArpRetryCount 0 and IPAutoconfigurationEnabled 0.
+v2 (only PowerShell):Removed the restart of network adapter.
+IP duplicate has been fixed in Windows Registry on print servers with ArpRetryCount 0 and IPAutoconfigurationEnabled 0.
 
 # What is this
 
 These scripts will automate a failover for 2 identical servers (Cloned VM on ESXI).
+In our case it is for 2 print servers that needs to have high uptime and redundancy.
 
 Server1 is setup with 2 addresses (10.156.4.97, 10.156.4.98), Server2 is setup with 1 address (10.156.4.97).
 
