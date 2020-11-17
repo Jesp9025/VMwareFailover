@@ -1,4 +1,4 @@
-# VmwareRedundancy
+# VMware Redundancy
 
 Python version and powershell version of print server failover.
 
