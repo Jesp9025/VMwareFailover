@@ -19,6 +19,10 @@ A case of ping failing could mean the OS is updating, rebooting or in fail mode.
 
 if ping succeeds, all is good and nothing else happens.
 
+v1 only: If .98 is pingable, but .97 is not, if will attempt to restart the network adapter on server1 (duplicate IP error).
+
+v2: Has been fixed as described earlier.
+
 If ping fails, it will check if secondary VM is powered up, and if not, will power it up.
 
 It will then continue in a loop and attempt to see if primary VM is on and pingable, and shutdown secondary VM if it is indeed pingable.
