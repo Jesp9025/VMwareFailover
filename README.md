@@ -12,6 +12,11 @@ In our case it is for 2 print servers that needs to have high uptime and redunda
 
 Server1 is setup with 2 addresses (10.156.4.97, 10.156.4.98), Server2 is setup with 1 address (10.156.4.97).
 
+# Why the second IP address on Server1
+
+The second address on server1 is needed to ping the server, since server2 also has the same primary IP address as server1 (10.156.4.97),
+and pinging .97 while secondary VM is up and running, will give a false positive of the primary VM's state.
+
 # How does it work
 
 Script checks if primary VM is on, and if not, power up secondary VM.
@@ -28,9 +33,3 @@ v2: Has been fixed as described earlier.
 If ping fails, it will check if secondary VM is powered up, and if not, will power it up.
 
 It will then continue in a loop and attempt to see if primary VM is on and pingable, and shutdown secondary VM if it is indeed pingable.
-
-
-# Why the second IP address on Server1
-
-The second address on server1 is needed to ping the server, since server2 also has the same primary IP address as server1 (10.156.4.97),
-and pinging .97 while secondary VM is up and running, will give a false positive of the primary VM's state.
