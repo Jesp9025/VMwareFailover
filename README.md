@@ -21,7 +21,7 @@ if ping succeeds, all is good and nothing else happens.
 
 If ping fails, it will check if secondary VM is powered up, and if not, will power it up.
 
-It will then continue in a loop and attempt to see if primary VM is on and pingable.
+It will then continue in a loop and attempt to see if primary VM is on and pingable, and shutdown secondary VM if it is indeed pingable.
 
 
 # Why the second IP address on Server1
