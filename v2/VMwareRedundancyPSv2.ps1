@@ -34,7 +34,7 @@ while($true)
     if ($status1 -eq "PoweredOn")
     {
         Start-Sleep -Seconds 2
-        Write-Host "Pinging $computer1 'hidden' IP Address..."
+        Write-Host "Pinging $computer1 secondary IP Address..."
         if (!(Test-Connection -Cn 10.156.4.98 -BufferSize 16 -Count 3 -ea 0 -Quiet))
         {
             Write-Host "$computer1 returned no response";
@@ -56,7 +56,8 @@ while($true)
             Write-Host "Pinging $computer1 primary IP Address..."
             if (!(Test-Connection -Cn 10.156.4.97 -BufferSize 16 -Count 3 -ea 0 -Quiet))
             {
-                Write-Host "$computer1 returned no response"
+                Write-Host "$computer1 returned no response. Will attempt to ping again soon"
+                Write-Host "If $computer1 continues to return no response on primary IP Address, look into it!"
                 Start-Sleep -Seconds 1
             }
             else
