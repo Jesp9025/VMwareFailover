@@ -1,4 +1,4 @@
-# *This is part of a school project*
+# *This is part of a school project!*
 
 # VMware Redundancy
 
