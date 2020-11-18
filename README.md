@@ -1,8 +1,8 @@
 # *This is part of a school project!*
 
-# VMware Redundancy
+# VMware Custom Failover
 
-Python version and powershell version of print server failover.
+Python version and PowerShell version of print server failover.
 
 v2 (only PowerShell):Removed the restart of network adapter.
 IP duplicate has been fixed in Windows Registry on print servers with ArpRetryCount 0 and IPAutoconfigurationEnabled 0.
