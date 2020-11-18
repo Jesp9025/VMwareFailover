@@ -1,3 +1,5 @@
+# *This is part of a school project*
+
 # VMware Redundancy
 
 Python version and powershell version of print server failover.
