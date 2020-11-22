@@ -4,6 +4,8 @@
 
 Python version and PowerShell version of print server failover.
 
+Python version uses SSH, PowerShell version uses HTTP or HTTPS.
+
 v2 (only PowerShell):Removed the restart of network adapter.
 IP duplicate has been fixed in Windows Registry on print servers with ArpRetryCount 0 and IPAutoconfigurationEnabled 0.
 
